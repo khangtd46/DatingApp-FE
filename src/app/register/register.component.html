@@ -1,0 +1,12 @@
+<div class="text-center">
+    <h1>Sign Up</h1>
+    <hr>
+    <form #registerForm = "ngForm" (ngSubmit)="register()">
+        <input type="text" placeholder="Username" name="username" class="form-control" [(ngModel)]="model.username"> 
+        <input type="password" placeholder="Password" name="password" class="form-control mt-2" [(ngModel)]="model.password"> 
+        <div class="d-flex justify-content-center mt-2">
+            <button class="btn btn-success me-2">Register</button>
+            <button class="btn btn-info" type="button" (click)="CancelRegisterMode()">Cancel</button>
+        </div>
+    </form>
+</div>
