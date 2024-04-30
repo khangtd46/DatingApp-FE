@@ -15,12 +15,11 @@ export class AppComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.GetUsersList();
+    //this.GetUsersList();
     this.SetCurrentUser();
   }
 
   GetUsersList(): void {
-    console.log("Hello From app")
     this.http.get(this.baseUrl + "Users").subscribe({
       next:value => {
         this.Users = value;

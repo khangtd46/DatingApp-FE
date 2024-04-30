@@ -4,6 +4,8 @@ import { NgForm, Validators } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import { Observable, of } from 'rxjs';
 import { User } from '../_models/User';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav',
@@ -11,29 +13,21 @@ import { User } from '../_models/User';
   styleUrl: './nav.component.css'
 })
 export class NavComponent implements OnInit {
-  model:any = {};
-  constructor(public accountService:AccountService){}
+  model: any = {};
+  constructor(public accountService: AccountService, private router: Router,private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
 
-  login(){
-    console.log(this.model);
+  login() {
     this.accountService.login(this.model).subscribe({
-      next: response => {
-        console.log(response);
-      },
-      error: error => {
-        console.log(error);
-      },
-      complete: () => {
-        console.log('Login Complete');
-      }
-    });;
+      next: _ => this.router.navigateByUrl('/members'),
+      error: error => this.toastr.warning(error.error)
+    });
   }
-  logout(){
+  logout() {
     this.accountService.logout();
-    this.accountService.currentuser$
+    this.router.navigateByUrl('/');
   }
 
 }
