@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="d-flex">
+            <button class="btn btn-primary" (click)="Auth()">Auth</button>
+            <button class="btn btn-primary" (click)="NotFound()">Not Found</button>
+            <button class="btn btn-primary" (click)="ServerError()">Server Error</button>
+            <button class="btn btn-primary" (click)="BadRequest()">BadRequest</button>
+            <button class="btn btn-primary" (click)="ValidationError()">ValidationError</button>
+    </div>
+</div>
+<ng-container *ngIf="validatonErrors.length > 0">
+    <ul class="text-danger">
+        <li *ngFor="let error of validatonErrors">{{error}}</li>
+    </ul>
+</ng-container>
